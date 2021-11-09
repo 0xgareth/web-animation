@@ -1,8 +1,12 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
+// SCENE
+// scene is an object that contains the objects in your animation
 const scene = new THREE.Scene()
 
+// CAMERA
+// the view boundary of the scene
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -11,6 +15,8 @@ const camera = new THREE.PerspectiveCamera(
 )
 camera.position.z = 2
 
+//*+ RENDERER
+// creates the canvas
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
