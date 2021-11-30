@@ -31,23 +31,20 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 // Time
-let time = Date.now()
+const clock = new THREE.Clock()
 
 // Animations
 const tick = () =>
 {
-    const currentTime = Date.now()
-    const deltaTime = currentTime - time
-    time = currentTime
+    const elapsedTime = clock.getElapsedTime()
 
-    // update objects
-    mesh.rotation.y += 0.01 
-    mesh.rotation.z += 0.01 
-    mesh.rotation.x += 0.01
+    // update objects - use time to update the same regardless of FPS
+    mesh.rotation.y = Math.sin(elapsedTime)
+    mesh.rotation.z = Math.sin(elapsedTime)
+    mesh.rotation.x = Math.sin(elapsedTime)
 
-    // render
+    camera.lookAt(mesh.position)
     renderer.render(scene, camera)
-    
     window.requestAnimationFrame(tick)
 }
 
