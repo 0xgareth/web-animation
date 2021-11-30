@@ -1,5 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
+import gsap from 'gsap'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -31,19 +32,22 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 // Time
-const clock = new THREE.Clock()
+// const clock = new THREE.Clock()
+
+gsap.to(mesh.position, { duration:1, delay:1, x:2 })
+gsap.to(mesh.position, { duration:1, delay:2, x:0 })
 
 // Animations
 const tick = () =>
 {
-    const elapsedTime = clock.getElapsedTime()
+    // const elapsedTime = clock.getElapsedTime()
 
     // update objects - use time to update the same regardless of FPS
-    mesh.rotation.y = Math.sin(elapsedTime)
-    mesh.rotation.z = Math.sin(elapsedTime)
-    mesh.rotation.x = Math.sin(elapsedTime)
+    // mesh.rotation.y = Math.sin(elapsedTime)
+    // mesh.rotation.z = Math.sin(elapsedTime)
+    // mesh.rotation.x = Math.sin(elapsedTime)
 
-    camera.lookAt(mesh.position)
+    // camera.lookAt(mesh.position)
     renderer.render(scene, camera)
     window.requestAnimationFrame(tick)
 }
